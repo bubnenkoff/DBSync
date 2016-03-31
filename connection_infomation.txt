@@ -1,0 +1,54 @@
+-- вставка поля для GUID
+ALTER TABLE Users add guid VARCHAR(36)
+
+---------------------------------------
+
+-- триггер для генерации GUID FIREBIRD
+
+SET TERM ^ ;
+
+CREATE OR ALTER TRIGGER GenGUID FOR USERS
+ACTIVE BEFORE INSERT
+AS
+BEGIN 
+   if (NEW.GUID is null ) THEN NEW.GUID = gen_uuid();
+END^
+
+SET TERM ; ^
+
+-- для первичного ключа если уже есть данные нужно добавить POSITION N+1. Если макисмальное значение PK было 3, то в значение позиции пойдет число 4
+------------------
+SELECT a.ID, a.USERNAME, uuid_to_char(a.GUID) FROM USERS a
+для отображения в виде букв
+
+----------------------------------------
+
+-- функция для генераци GUID. Нужно создать еще триггер дергающий функцию.
+-- вроде бы для тригерных функций тип возврата должен быть RETURNS trigger
+
+CREATE OR REPLACE FUNCTION insertGUID() RETURNS trigger AS
+$BODY$BEGIN
+	new.guid := md5(random()::text || clock_timestamp()::text;
+    return new;
+END$BODY$
+LANGUAGE plpgsql;
+
+------------------------------------------
+
+-- сам триггер, выполнять в окне запроса SQL
+-- BEFORE иначе будет вечный цикл
+
+DROP TRIGGER IF EXISTS createGUID ON "USERS";
+
+CREATE TRIGGER createGUID BEFORE INSERT ON "USERS" FOR EACH ROW EXECUTE PROCEDURE insertGUID();
+
+---------------------------------------------
+
+PG Чтобы был автоинкремент ID нужно _при_ _создании_ поля указать, что оно serial
+
+ALTER TABLE "USERS" ADD COLUMN id bigserial PRIMARY KEY;
+
+-------------------
+ODBC 32 битный
+%windir%\SysWOW64\odbcad32.exe
+----------------
