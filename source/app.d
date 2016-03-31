@@ -1,3 +1,7 @@
+// before start ODBC connection should be set up
+// %windir%\SysWOW64\odbcad32.exe
+// http://web.synametrics.com/firebird.htm
+
 import std.stdio;
 import std.conv;
 import std.algorithm;
@@ -8,6 +12,8 @@ import std.file;
 import ddbc.all;
 import parseconfig;
 import dbconnect;
+
+import arsd.mssql;
 
 ParseConfig config;
 
@@ -28,5 +34,14 @@ void main()
 
 	auto conn = ds.getConnection();
 	
-	
 }
+
+/*
+	auto db = new MsSql("DRIVER=Firebird/InterBase(r) driver;UID=SYSDBA;PWD=masterkey; DBNAME=D:\\Project\\2016\\DBSync\\TEST.FDB;");
+//	db.query("INSERT INTO users (id, name) values (30, 'hello mang')");
+	foreach(line; db.query("SELECT * FROM USERS")) {
+		writeln(line[1]);
+	}
+*/
+
+
