@@ -1,0 +1,12 @@
+{
+	"name": "dbsync",
+	"authors": [
+		"Dmitry Bubnenkov"
+	],
+	"description": "A minimal D application.",
+	"copyright": "Dmitry Bubnenkov (c) 2016",
+	"license": "Proprietary",
+	"dependencies": {
+		"ddbc": "==0.2.24"
+	}
+}
