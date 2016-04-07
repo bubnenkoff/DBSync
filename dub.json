@@ -7,6 +7,7 @@
 	"copyright": "Dmitry Bubnenkov (c) 2016",
 	"license": "Proprietary",
 	"dependencies": {
-		"ddbc": "==0.2.24"
+		"ddbc": "==0.2.24",
+		"dstddb": "~>0.0.3"
 	}
 }

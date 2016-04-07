@@ -7,7 +7,7 @@ import std.path;
 import std.stdio;
 
 import variantconfig;
-import dbconnect;
+//import dbconnect;
 
 class ParseConfig
 {
@@ -54,7 +54,7 @@ this()
 		catch(Exception msg)
 		{
 			writeln(msg.msg);
-			core.thread.Thread.sleep( dur!("msecs")(1000));
+			//core.thread.Thread.sleep( dur!("msecs")(1000));
 		}	
 	}
 

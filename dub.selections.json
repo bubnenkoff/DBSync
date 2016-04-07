@@ -5,9 +5,14 @@
 		"libevent": "2.0.1+2.0.16",
 		"libev": "5.0.0+4.04",
 		"dstddb": "0.0.3",
+		"derelict-util": "2.0.4",
+		"dpq2": "0.6.12",
+		"derelict-pq": "2.0.1",
+		"db": "0.7.2",
 		"openssl": "1.1.4+1.0.1g",
 		"memutils": "0.4.4",
 		"vibe-d": "0.7.28",
+		"cbor": "0.3.5",
 		"libasync": "0.7.8",
 		"mysql-native": "0.1.3"
 	}
